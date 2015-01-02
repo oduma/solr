@@ -41,3 +41,9 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+*.gen
+core0/data/index/segments_1
+*.lock
+core1/data/index/segments_1
+medialib/data/index/segments_1
