@@ -199,6 +199,9 @@
   <copyField source="lyrics_cs" dest="lyrics_t"/>
   <copyField source="artist_cs" dest="text"/>
   <copyField source="title_cs" dest="text"/>
+  <copyField source="album_cs" dest="text"/>
+  <copyField source="lyrics_cs" dest="text"/>
+  <copyField source="file_path" dest="text"/>
   <copyField source="artist_cs" dest="artist_f"/>
   
 

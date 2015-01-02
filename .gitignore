@@ -47,3 +47,14 @@ core0/data/index/segments_1
 *.lock
 core1/data/index/segments_1
 medialib/data/index/segments_1
+*.fdt
+*.fdx
+*.fnm
+*.nvd
+*.nvm
+*.si
+*.doc
+*.pos
+*.tim
+*.tip
+*.0000000000000000000
