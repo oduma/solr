@@ -109,6 +109,7 @@
 	</analyzer>
    </fieldType>
   <!-- general -->
+  <field name="file_path_id"        type="string"   indexed="true"  stored="true"  multiValued="false" required="true"/>
   <field name="file_path"        type="text_general_path"   indexed="true"  stored="true"  multiValued="false" required="true"/>
   <field name="extension_f"      type="string"   indexed="true"  stored="true"  multiValued="false" /> 
   <field name="letter_catalog_f"      type="string"   indexed="false"  stored="true"  multiValued="false" /> 
@@ -131,7 +132,7 @@
   
 
  <!-- field to use to determine and enforce document uniqueness. -->
- <uniqueKey>file_path</uniqueKey>
+ <uniqueKey>file_path_id</uniqueKey>
 
  <!-- field for the QueryParser to use when an explicit fieldname is absent -->
  <defaultSearchField>text</defaultSearchField>
