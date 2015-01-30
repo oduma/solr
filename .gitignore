@@ -58,3 +58,8 @@ medialib/data/index/segments_1
 *.tim
 *.tip
 *.0000000000000000000
+medialib/data/index/segments_2
+medialib/data/index/segments_1f
+*.del
+*.0000000000000000048
+*.0000000000000000049

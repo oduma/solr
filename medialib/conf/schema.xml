@@ -114,20 +114,12 @@
   <field name="extension_f"      type="string"   indexed="true"  stored="true"  multiValued="false" /> 
   <field name="letter_catalog_f"      type="string"   indexed="false"  stored="true"  multiValued="false" /> 
   <field name="artist_f"      type="string"   indexed="true"  stored="true"  multiValued="true" /> 
-  <field name="text"      type="text_general"   indexed="true"  stored="true"  multiValued="true" /> 
-  <field name="type"      type="string"   indexed="true"  stored="true"  multiValued="false" /> 
-  <field name="name"      type="text_general"   indexed="true"  stored="true"  multiValued="false" /> 
   <field name="album"      type="text_general"   indexed="true"  stored="true"  multiValued="false" /> 
   <field name="lyrics"      type="text_general"   indexed="true"  stored="true"  multiValued="false" /> 
   <field name="title"      type="text_general"   indexed="true"  stored="true"  multiValued="false" /> 
   <field name="artist"      type="text_general"   indexed="true"  stored="true"  multiValued="true" /> 
   <field name="medialib"     type="string"   indexed="true"  stored="true"  multiValued="false" /> 
   <field name="_version_" type="long"     indexed="true"  stored="true"/>
-  <copyField source="artist" dest="text"/>
-  <copyField source="title" dest="text"/>
-  <copyField source="album" dest="text"/>
-  <copyField source="lyrics" dest="text"/>
-  <copyField source="file_path" dest="text"/>
   <copyField source="artist" dest="artist_f"/>
   
 
@@ -135,7 +127,7 @@
  <uniqueKey>file_path_id</uniqueKey>
 
  <!-- field for the QueryParser to use when an explicit fieldname is absent -->
- <defaultSearchField>text</defaultSearchField>
+ <defaultSearchField>lyrics</defaultSearchField>
 
  <!-- SolrQueryParser configuration: defaultOperator="AND|OR" -->
  <solrQueryParser defaultOperator="OR"/>
