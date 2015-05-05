@@ -32,6 +32,7 @@
     <core name="core0" instanceDir="core0" />
     <core name="core1" instanceDir="core1" />
     <core name="medialib" instanceDir="medialib" />
+	<core name="medialib-debug" instanceDir="medialib-debug"/>
     
     <shardHandlerFactory name="shardHandlerFactory" class="HttpShardHandlerFactory">
       <str name="urlScheme">${urlScheme:}</str>
