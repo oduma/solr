@@ -112,7 +112,7 @@
   <field name="file_path_id"        type="string"   indexed="true"  stored="true"  multiValued="false" required="true"/>
   <field name="file_path"        type="text_general_path"   indexed="true"  stored="true"  multiValued="false" required="true"/>
   <field name="extension_f"      type="string"   indexed="true"  stored="true"  multiValued="false" /> 
-  <field name="letter_catalog_f"      type="string"   indexed="false"  stored="true"  multiValued="false" /> 
+  <field name="letter_catalog_f"      type="string"   indexed="true"  stored="true"  multiValued="false" /> 
   <field name="artist_f"      type="string"   indexed="true"  stored="true"  multiValued="true" /> 
   <field name="album"      type="text_general"   indexed="true"  stored="true"  multiValued="false" /> 
   <field name="lyrics"      type="text_general"   indexed="true"  stored="true"  multiValued="false" /> 
