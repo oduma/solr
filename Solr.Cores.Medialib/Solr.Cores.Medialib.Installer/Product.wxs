@@ -1,30 +1,168 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="*" Name="Solr.Cores.Medialib.Installer" Language="1033" Version="1.0.0.0" Manufacturer="Spencer Stuart" UpgradeCode="d31b1699-bf84-4b0e-868d-9c97cf3af315">
-		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension" >
+  <Product Id="*" Name="Solr.Cores.Medialib" Language="1033" Version="1.0.0.0" Manufacturer="Sciendo" UpgradeCode="{3CAAFFE7-2729-42F2-94C0-28145C734AE8}">
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine"/>
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLLOCATION" />
+    <Property Id="DELETEDATA" Value="No"/>
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate />
 
-		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
-		<MediaTemplate />
+    <Feature Id="Solr.Cores.Medialib" Title="Solr Cores Configuration for Sciendo Indexer" Level="1" ConfigurableDirectory="INSTALLLOCATION" AllowAdvertise="no">
+      <Component Id="cmp1r" Directory="INSTALLLOCATION" Guid="{F0395823-D726-4D2D-957A-B8BEF7324CE8}">
+        <File Id="fil1r" KeyPath="yes" Source="..\..\solr.xml" />
+              <util:XmlFile Id="SetMedialibFolder"
+                      Action="setValue"
+                      ElementPath="//solr/@persistent"
+                      Value="[CONFMEDIALIB]"
+                      File="[#fil1r]" />
+      </Component>
+      <Component Id="cmp2r" Directory="INSTALLLOCATION" Guid="{D7D07D7B-BFC0-481F-85FF-6BE54B7E850A}">
+        <File Id="fil2r" KeyPath="yes" Source="..\..\zoo.cfg" />
+      </Component>
+      <Component Id="cmp3r" Directory="INSTALLLOCATION" Guid="{89AE2880-3C52-42E7-86BF-7E0C13986293}">
+        <File Id="fil3r" KeyPath="yes" Source="..\..\Document-json-example.txt" />
+      </Component>
+      <Component Id="cmp4r" Directory="INSTALLLOCATION" Guid="{FA5C626A-FFFA-4C5F-9E40-5D9417A4B5E3}">
+        <File Id="fil4r" KeyPath="yes" Source="..\..\Readme.txt" />
+      </Component>
+      <Component Id="cmpmedia1" Directory="CONFMEDIALIB" Guid="{42D9CD80-2433-4BB3-B8E6-3EA89542C7F2}">
+        <File Id="filmedia1" KeyPath="yes" Source="..\..\medialib\conf\_rest_managed.json" />
+      </Component>
+      <Component Id="cmpmedia2" Directory="CONFMEDIALIB" Guid="{D798E9C6-79DE-4DED-8082-E168B8111AE1}">
+        <File Id="filmedia2" KeyPath="yes" Source="..\..\medialib\conf\en_GB.aff" />
+      </Component>
+      <Component Id="cmpmedia3" Directory="CONFMEDIALIB" Guid="{7ED2D64B-5F18-4C39-BF6E-AE821EB62C9E}">
+        <File Id="filmedia3" KeyPath="yes" Source="..\..\medialib\conf\en_GB.dic" />
+      </Component>
+      <Component Id="cmpmedia4" Directory="CONFMEDIALIB" Guid="{3C8B27C1-FFA6-4F1F-89DA-B814087A95E4}">
+        <File Id="filmedia4" KeyPath="yes" Source="..\..\medialib\conf\schema.xml" />
+      </Component>
+      <Component Id="cmpmedia5" Directory="CONFMEDIALIB" Guid="{CF9C95E8-67AE-492B-949A-3D914D4088E5}">
+        <File Id="filmedia5" KeyPath="yes" Source="..\..\medialib\conf\solrconfig.xml" />
+      </Component>
+      <Component Id="cmpmedia6" Directory="CONFMEDIALIB" Guid="{582072DC-E481-4D76-B87E-1649237F4389}">
+        <File Id="filmedia6" KeyPath="yes" Source="..\..\medialib\conf\stemdict.txt" />
+      </Component>
 
-		<Feature Id="ProductFeature" Title="Solr.Cores.Medialib.Installer" Level="1">
-			<ComponentGroupRef Id="ProductComponents" />
-		</Feature>
-	</Product>
 
-	<Fragment>
-		<Directory Id="TARGETDIR" Name="SourceDir">
-			<Directory Id="ProgramFilesFolder">
-				<Directory Id="INSTALLFOLDER" Name="Solr.Cores.Medialib.Installer" />
-			</Directory>
-		</Directory>
-	</Fragment>
+      <Component Id="cmpmediad1" Directory="CONFMEDIALIBDEBUG" Guid="{6E0DD29A-FE56-4426-85C0-1DC771399F0F}">
+        <File Id="filmediad1" KeyPath="yes" Source="..\..\medialib-debug\conf\_rest_managed.json" />
+      </Component>
+      <Component Id="cmpmediad2" Directory="CONFMEDIALIBDEBUG" Guid="{CEB3114B-A367-435C-8CBE-975168E58FCE}">
+        <File Id="filmediad2" KeyPath="yes" Source="..\..\medialib-debug\conf\en_GB.aff" />
+      </Component>
+      <Component Id="cmpmediad3" Directory="CONFMEDIALIBDEBUG" Guid="{1017FD5F-01EB-47D3-AADD-D960FB5115A1}">
+        <File Id="filmediad3" KeyPath="yes" Source="..\..\medialib-debug\conf\en_GB.dic" />
+      </Component>
+      <Component Id="cmpmediad4" Directory="CONFMEDIALIBDEBUG" Guid="{A728FEBE-CE72-416A-AAAD-5F6F1845E46A}">
+        <File Id="filmediad4" KeyPath="yes" Source="..\..\medialib-debug\conf\schema.xml" />
+      </Component>
+      <Component Id="cmpmediad5" Directory="CONFMEDIALIBDEBUG" Guid="{472DEB88-3744-4B65-917B-515EFE9F20FD}">
+        <File Id="filmediad5" KeyPath="yes" Source="..\..\medialib-debug\conf\solrconfig.xml" />
+      </Component>
+      <Component Id="cmpmediad6" Directory="CONFMEDIALIBDEBUG" Guid="{AFA24BB0-020A-41F0-BE13-75E88E1471F7}">
+        <File Id="filmediad6" KeyPath="yes" Source="..\..\medialib-debug\conf\stemdict.txt" />
+      </Component>
+    </Feature>
+  </Product>
 
-	<Fragment>
-		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
-			<!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
-			<!-- <Component Id="ProductComponent"> -->
-				<!-- TODO: Insert files, registry keys, and other resources here. -->
-			<!-- </Component> -->
-		</ComponentGroup>
-	</Fragment>
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="BITNAMI" Name="Bitnami">
+        <Directory Id="SOLR41030" Name="solr-4.10.3-0">
+          <Directory Id="APACHESOLR" Name="apache-solr">
+            <Directory Id="INSTALLLOCATION" Name="solr">
+                <Directory Id="MEDIALIB" Name="medialib">
+                  <Directory Id="CONFMEDIALIB" Name="conf"/>
+                </Directory>
+              <Directory Id="MEDIALIBDEBUG" Name="medialib-debug">
+                  <Directory Id="CONFMEDIALIBDEBUG" Name="conf"/>
+              </Directory>
+            </Directory>
+          </Directory>
+        </Directory>
+    </Directory>
+  </Directory>
+
+    <UI Id="MyWixUI">
+      <TextStyle Id="WixUI_Font_Normal" FaceName="Tahoma" Size="8" />
+      <TextStyle Id="WixUI_Font_Bigger" FaceName="Tahoma" Size="12" />
+      <TextStyle Id="WixUI_Font_Title" FaceName="Tahoma" Size="9" Bold="yes" />
+
+      <Property Id="DefaultUIFont" Value="WixUI_Font_Normal" />
+      <Property Id="WixUI_Mode" Value="Advanced" />
+      <Dialog Id="MySynchDlg" Width="370" Height="270"
+               Title="Settings - [ProductName]" NoMinimize="yes">
+
+        <!-- Delete existing data prompt -->
+        <Control Id="DeleteExistingDataLabel" Type ="Text" X="45" Y="103" Width="100" Height="15" TabSkip="no" Text="&amp;Delete existing data:"/>
+        <Control Id="DeleteExistingDataValue" Type ="Edit" X="45" Y="118" Width="215" Height="18" Property="DELETEDATA"/>
+        <!-- Back button -->
+        <Control Id="Back" Type="PushButton" X="180" Y="243"
+                Width="56" Height="17" Text="&amp;Back">
+          <Publish Event="NewDialog" Value="InstallDirDlg">1</Publish>
+        </Control>
+        <Control Id="Next" Type="PushButton" X="236" Y="243"
+               Width="56" Height="17" Default="yes" Text="&amp;Next">
+          <Publish Event="NewDialog" Value="VerifyReadyDlg">
+          </Publish>
+        </Control>
+        <Control Id="Cancel" Type="PushButton" X="304" Y="243"
+                   Width="56" Height="17" Cancel="yes" Text="Cancel">
+          <Publish Event="SpawnDialog" Value="CancelDlg">1</Publish>
+        </Control>
+        <Control Id="BannerBitmap" Type="Bitmap" X="0" Y="0"
+             Width="370" Height="44" TabSkip="no" Text="WixUI_Bmp_Banner" />
+        <Control Id="BottomLine" Type="Line" X="0" Y="234"
+              Width="370" Height="0" />
+        <Control Id="Title" Type="Text" X="15" Y="6"
+                Width="200" Height="15" Transparent="yes" NoPrefix="yes">
+          <Text>{\WixUI_Font_Title}MySynch Queue Sender Configuration</Text>
+        </Control>
+        <Control Id="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" />
+      </Dialog>
+
+
+      <DialogRef Id="BrowseDlg" />
+      <DialogRef Id="DiskCostDlg" />
+      <DialogRef Id="ErrorDlg" />
+      <DialogRef Id="FatalError" />
+      <DialogRef Id="FilesInUse" />
+      <DialogRef Id="MsiRMFilesInUse" />
+      <DialogRef Id="PrepareDlg" />
+      <DialogRef Id="ProgressDlg" />
+      <DialogRef Id="ResumeDlg" />
+      <DialogRef Id="UserExit" />
+
+      <Publish Dialog="BrowseDlg" Control="OK" Event="DoAction" Value="WixUIValidatePath" Order="3">1</Publish>
+      <Publish Dialog="BrowseDlg" Control="OK" Event="SpawnDialog" Value="InvalidDirDlg" Order="4"><![CDATA[WIXUI_INSTALLDIR_VALID<>"1"]]></Publish>
+
+      <Publish Dialog="ExitDialog" Control="Finish" Event="EndDialog" Value="Return" Order="999">1</Publish>
+
+      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg" Order="1">NOT Installed</Publish>
+      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="VerifyReadyDlg" Order="1">Installed AND PATCH</Publish>
+
+      <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg">1</Publish>
+      <Publish Dialog="InstallDirDlg" Control="Next" Event="SetTargetPath" Value="[WIXUI_INSTALLDIR]" Order="1">1</Publish>
+      <Publish Dialog="InstallDirDlg" Control="Next" Event="DoAction" Value="WixUIValidatePath" Order="2">NOT WIXUI_DONTVALIDATEPATH</Publish>
+      <Publish Dialog="InstallDirDlg" Control="Next" Event="SpawnDialog" Value="InvalidDirDlg" Order="3"><![CDATA[NOT WIXUI_DONTVALIDATEPATH AND WIXUI_INSTALLDIR_VALID<>"1"]]></Publish>
+      <Publish Dialog="InstallDirDlg" Control="Next" Event="NewDialog" Value="MySynchDlg" Order="4">WIXUI_DONTVALIDATEPATH OR WIXUI_INSTALLDIR_VALID="1"</Publish>
+      <Publish Dialog="InstallDirDlg" Control="ChangeFolder" Property="_BrowseProperty" Value="[WIXUI_INSTALLDIR]" Order="1">1</Publish>
+      <Publish Dialog="InstallDirDlg" Control="ChangeFolder" Event="SpawnDialog" Value="BrowseDlg" Order="2">1</Publish>
+
+      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="MySynchDlg" Order="1">NOT Installed</Publish>
+      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="MaintenanceTypeDlg" Order="2">Installed AND NOT PATCH</Publish>
+      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2">Installed AND PATCH</Publish>
+
+      <Publish Dialog="MaintenanceWelcomeDlg" Control="Next" Event="NewDialog" Value="MaintenanceTypeDlg">1</Publish>
+
+      <Publish Dialog="MaintenanceTypeDlg" Control="RepairButton" Event="NewDialog" Value="VerifyReadyDlg">1</Publish>
+      <Publish Dialog="MaintenanceTypeDlg" Control="RemoveButton" Event="NewDialog" Value="VerifyReadyDlg">1</Publish>
+      <Publish Dialog="MaintenanceTypeDlg" Control="Back" Event="NewDialog" Value="MaintenanceWelcomeDlg">1</Publish>
+
+    </UI>
+    <UIRef Id="WixUI_Common" />
+
+  </Fragment>
+
 </Wix>

@@ -42,24 +42,10 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-*.gen
-core0/data/index/segments_1
-*.lock
-core1/data/index/segments_1
-medialib/data/index/segments_1
-*.fdt
-*.fdx
-*.fnm
-*.nvd
-*.nvm
-*.si
-*.doc
-*.pos
-*.tim
-*.tip
-*.0000000000000000000
-medialib/data/index/segments_2
-medialib/data/index/segments_1f
-*.del
-*.0000000000000000048
-*.0000000000000000049
+*.*
+core0/data
+core1/data
+medialib/data
+medialib-debug/data
+Solr.Cores.Medialib\Solr.Cores.Medialib.Installer/bin
+Solr.Cores.Medialib\Solr.Cores.Medialib.Installer/obj
