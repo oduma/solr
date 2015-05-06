@@ -114,13 +114,15 @@
   <field name="extension_f"      type="string"   indexed="true"  stored="true"  multiValued="false" /> 
   <field name="letter_catalog_f"      type="string"   indexed="true"  stored="true"  multiValued="false" /> 
   <field name="artist_f"      type="string"   indexed="true"  stored="true"  multiValued="true" /> 
+  <field name="title_f"      type="string"   indexed="true"  stored="true"  multiValued="false" /> 
   <field name="album"      type="text_general"   indexed="true"  stored="true"  multiValued="false" /> 
   <field name="lyrics"      type="text_general"   indexed="true"  stored="true"  multiValued="false" /> 
   <field name="title"      type="text_general"   indexed="true"  stored="true"  multiValued="false" /> 
   <field name="artist"      type="text_general"   indexed="true"  stored="true"  multiValued="true" /> 
-  <field name="medialib"     type="string"   indexed="true"  stored="true"  multiValued="false" /> 
+  <field name="medialib-debug"     type="string"   indexed="true"  stored="true"  multiValued="false" /> 
   <field name="_version_" type="long"     indexed="true"  stored="true"/>
   <copyField source="artist" dest="artist_f"/>
+  <copyField source="title" dest="title_f"/>
   
 
  <!-- field to use to determine and enforce document uniqueness. -->
