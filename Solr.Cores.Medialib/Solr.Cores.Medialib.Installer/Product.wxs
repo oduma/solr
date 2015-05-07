@@ -3,18 +3,12 @@
   <Product Id="*" Name="Solr.Cores.Medialib" Language="1033" Version="1.0.0.0" Manufacturer="Sciendo" UpgradeCode="{3CAAFFE7-2729-42F2-94C0-28145C734AE8}">
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine"/>
     <Property Id="WIXUI_INSTALLDIR" Value="INSTALLLOCATION" />
-    <Property Id="DELETEDATA" Value="No"/>
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
     <MediaTemplate />
 
     <Feature Id="Solr.Cores.Medialib" Title="Solr Cores Configuration for Sciendo Indexer" Level="1" ConfigurableDirectory="INSTALLLOCATION" AllowAdvertise="no">
       <Component Id="cmp1r" Directory="INSTALLLOCATION" Guid="{F0395823-D726-4D2D-957A-B8BEF7324CE8}">
         <File Id="fil1r" KeyPath="yes" Source="..\..\solr.xml" />
-              <util:XmlFile Id="SetMedialibFolder"
-                      Action="setValue"
-                      ElementPath="//solr/@persistent"
-                      Value="[CONFMEDIALIB]"
-                      File="[#fil1r]" />
       </Component>
       <Component Id="cmp2r" Directory="INSTALLLOCATION" Guid="{D7D07D7B-BFC0-481F-85FF-6BE54B7E850A}">
         <File Id="fil2r" KeyPath="yes" Source="..\..\zoo.cfg" />
@@ -95,8 +89,7 @@
                Title="Settings - [ProductName]" NoMinimize="yes">
 
         <!-- Delete existing data prompt -->
-        <Control Id="DeleteExistingDataLabel" Type ="Text" X="45" Y="103" Width="100" Height="15" TabSkip="no" Text="&amp;Delete existing data:"/>
-        <Control Id="DeleteExistingDataValue" Type ="Edit" X="45" Y="118" Width="215" Height="18" Property="DELETEDATA"/>
+        <Control Id="DeleteExistingDataLabel" Type ="Text" X="45" Y="103" Width="100" Height="15" TabSkip="no" Text="&amp;Nothing here continue"/>
         <!-- Back button -->
         <Control Id="Back" Type="PushButton" X="180" Y="243"
                 Width="56" Height="17" Text="&amp;Back">
